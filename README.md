@@ -21,4 +21,8 @@
 ********************************************************************************
 #### ②、按钮点亮一个LED灯电路图： http://blog.csdn.net/xh870189248/article/details/78126689
  ![8266最小系统](http://h5xuhong.oss-cn-hongkong.aliyuncs.com/8266%E5%9B%BE%E7%89%87/%E6%8C%89%E9%94%AE%E7%94%B5%E8%B7%AF%E5%9B%BE.png)
+
+********************************************************************************
+#### ③、使用软件定时器闪烁一个LED灯电路图： http://blog.csdn.net/xh870189248/article/details/78155357
+ ![8266最小系统](http://img.blog.csdn.net/20171003165642605?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveGg4NzAxODkyNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
  
