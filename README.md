@@ -6,6 +6,7 @@
 |      **文件夹名字（代表一个工程）**   | 说明|文档说明链接|
 |-------|------|-----------|
 | 《**2_ButtonLight**》 | 一个按键点亮一个LED灯。|http://blog.csdn.net/xh870189248/article/details/78126689|
+| 《**3_TimerLED**》| 软件定时器实现0.5s闪烁一盏LED。 |http://blog.csdn.net/xh870189248/article/details/78155357|
 | 《**Gizkit_soc_pet**》| 机智云Gokit2、3扩展板的soc方案宠物屋代码。 ||
 | 《**GokitTimerLight**》| 基于机智云平台soc方案定时开启一个LED的源码。 |http://club.gizwits.com/thread-7787-1-1.html|
  
