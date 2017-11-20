@@ -7,6 +7,7 @@
 |-------|------|-----------|
 | 《**2_ButtonLight**》 | 一个按键点亮一个LED灯。|http://blog.csdn.net/xh870189248/article/details/78126689|
 | 《**3_TimerLED**》| 软件定时器实现0.5s闪烁一盏LED。 |http://blog.csdn.net/xh870189248/article/details/78155357|
+| 《**5_5_PWM_LED**》| PWM控制一盏LED的亮度变化。 |http://blog.csdn.net/xh870189248/article/details/78202224|
 | 《**Gizkit_soc_pet**》| 机智云Gokit2、3扩展板的soc方案宠物屋代码。 ||
 | 《**GokitTimerLight**》| 基于机智云平台soc方案定时开启一个LED的源码。 |http://club.gizwits.com/thread-7787-1-1.html|
  
@@ -26,3 +27,6 @@
 #### ③、使用软件定时器闪烁一个LED灯电路图： http://blog.csdn.net/xh870189248/article/details/78155357
  ![8266最小系统](http://img.blog.csdn.net/20171003165642605?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveGg4NzAxODkyNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
  
+********************************************************************************
+#### ④ 了解PWM，更为深入地用PWM控制一盏LED的亮度变化。： http://blog.csdn.net/xh870189248/article/details/78202224
+ ![8266最小系统](http://img.blog.csdn.net/20171120102325475?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveGg4NzAxODkyNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
