@@ -1,36 +1,10 @@
-/*********************************************************************************************
-程序名： 　渐变灯（PWM）
-编写人： 　　 　
-编写时间：　　
-硬件支持：　　
-接口说明：　　
-修改日志：　　
-　　NO.1-								
-/*********************************************************************************************
-说明：
 
-/*********************************************************************************************/
 #include "driver/uart.h"  //串口0需要的头文件
 #include "osapi.h"  //串口1需要的头文件
 #include "user_interface.h" //WIFI连接需要的头文件
 #include "gpio.h"  //端口控制需要的头文件
 #include "pwm.h"  //pwm控制需要的头文件
-//#include "at_custom.h"
-//#include "c_types.h"
-//#include "eagle_soc.h"
-//#include "espconn.h"
-//#include "espnow.h"
-//#include "ets_sys.h"
-//#include "ip_addr.h"
-//#include "mem.h"
-//#include "os_type.h"
-//#include "ping.h"
-//#include "queue.h"
-//#include "smartconfig.h"
-//#include "sntp.h"
-//#include "spi_flash.h"
-//#include "upgrade.h"
-//#include "user_config.h"
+
 
 os_timer_t timer;
 uint8 type,x,y,z;
@@ -70,7 +44,3 @@ void user_rf_pre_init()
 {
 
 }
-
-/*****************************************************************************/
-//羽翼电子工作室  http://yuyidianzi.taobao.com
-/*****************************************************************************/
