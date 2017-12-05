@@ -2,12 +2,8 @@
   <img src="http://h5xuhong.oss-cn-hongkong.aliyuncs.com/8266%E5%9B%BE%E7%89%87/8266popuuo.png" width="550px" height="360px" alt="Banner" />
 </p>
  
-## 【深度开源】物联网模块wiif模块8266学习之旅 （**持续更新...**） 
-
-
-**目录说明：** 
-
-
+ 
+# 目录说明：
 
 |      **文件夹名字（代表一个工程）**   | 说明|文档说明链接|
 |-------|------|-----------|
