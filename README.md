@@ -22,7 +22,7 @@ CSDN博客博文：[http://blog.csdn.net/xh870189248/article/details/77985541](h
 | 《**7_SmartConfig**》|基于乐鑫的SDK的按键触发一键配网smartConfig模式上云端代码。 |http://blog.csdn.net/xh870189248/article/details/78677952|
 | 《**8_softAPToNet**》|基于乐鑫的SDK的按键触发softAP模式上云端代码。 |http://blog.csdn.net/xh870189248/article/details/78703905|
 
-| 《**Gizkit_soc_pet**》| 机智云Gokit2、3扩展板的soc方案宠物屋代码。 ||
+| 《**Gizkit_soc_pet**》| 机智云Gokit2、3扩展板的soc方案宠物屋代码。 |
 | 《**GokitTimerLight**》| 基于机智云平台soc方案定时开启一个LED的源码。 |http://club.gizwits.com/thread-7787-1-1.html|
  
 
