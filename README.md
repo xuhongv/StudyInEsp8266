@@ -20,6 +20,8 @@ CSDN博客博文：[http://blog.csdn.net/xh870189248/article/details/77985541](h
 | 《**5_PWM_LED**》| PWM控制一盏LED的亮度变化。 |http://blog.csdn.net/xh870189248/article/details/78202224|
 | 《**6_PostAndGet**》|post和get请求天气预报信息封装例子。 |http://blog.csdn.net/xh870189248/article/details/78656563|
 | 《**7_SmartConfig**》|基于乐鑫的SDK的按键触发一键配网smartConfig模式上云端代码。 |http://blog.csdn.net/xh870189248/article/details/78677952|
+| 《**8_softAPToNet**》|基于乐鑫的SDK的按键触发softAP模式上云端代码。 |http://blog.csdn.net/xh870189248/article/details/78703905|
+
 | 《**Gizkit_soc_pet**》| 机智云Gokit2、3扩展板的soc方案宠物屋代码。 ||
 | 《**GokitTimerLight**》| 基于机智云平台soc方案定时开启一个LED的源码。 |http://club.gizwits.com/thread-7787-1-1.html|
  
@@ -51,6 +53,9 @@ CSDN博客博文：[http://blog.csdn.net/xh870189248/article/details/77985541](h
 #### ④ 基于乐鑫的SDK的按键触发一键配网smartConfig模式代码。 ： http://blog.csdn.net/xh870189248/article/details/78677952
  ![8266最小系统](http://img.blog.csdn.net/20171202101331285?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveGg4NzAxODkyNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
+********************************************************************************
+#### ⑤  softAP热点配网模式原理，仿“机智云”定义自己的热点配网模式协议。 ： http://blog.csdn.net/xh870189248/article/details/78703905
+ ![8266最小系统](http://img.blog.csdn.net/20171206150520238?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveGg4NzAxODkyNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
  
 
