@@ -9,6 +9,7 @@
 
 struct espconn user_tcp_espconn;
 os_timer_t checkTimer_wifistate;
+
 //按键定义
 #define GPIO_KEY_NUM                            1
 #define KEY_0_IO_MUX                            PERIPHS_IO_MUX_MTMS_U
