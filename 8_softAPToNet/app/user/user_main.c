@@ -15,8 +15,9 @@ os_timer_t checkTimer_wifistate;
 #define KEY_0_IO_MUX                            PERIPHS_IO_MUX_MTMS_U
 #define KEY_0_IO_NUM                            14
 #define KEY_0_IO_FUNC                           FUNC_GPIO14
-LOCAL key_typedef_t * singleKey[GPIO_KEY_NUM]; ///< Defines a single key member array pointer
-LOCAL keys_typedef_t keys; ///< Defines the overall key module structure pointer
+
+LOCAL key_typedef_t * singleKey[GPIO_KEY_NUM]; 
+LOCAL keys_typedef_t keys; 
 
 bool isConnected = false;
 
