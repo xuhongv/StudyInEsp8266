@@ -21,6 +21,7 @@ CSDN博客博文：[http://blog.csdn.net/xh870189248/article/details/77985541](h
 | 《**6_PostAndGet**》|post和get请求天气预报信息封装例子。 |http://blog.csdn.net/xh870189248/article/details/78656563|
 | 《**7_SmartConfig**》|基于乐鑫的SDK的按键触发一键配网smartConfig模式上云端代码。 |http://blog.csdn.net/xh870189248/article/details/78677952|
 | 《**8_softAPToNet**》|基于乐鑫的SDK的按键触发softAP模式上云端代码。 |http://blog.csdn.net/xh870189248/article/details/78703905|
+| 《**9_TcpAndUdp**》|8266的TCP、UDP的客户端服务端代码工程。 |http://blog.csdn.net/xh870189248/article/details/78739311|
 | 《**Gizkit_soc_pet**》| 机智云Gokit2、3扩展板的soc方案宠物屋代码。 |...|
 | 《**GokitTimerLight**》| 基于机智云平台soc方案定时开启一个LED的源码。 |http://club.gizwits.com/thread-7787-1-1.html|
  
