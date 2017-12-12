@@ -159,7 +159,7 @@ void user_init(void) {
 
 	CFG_Load();
 
-	PIN_FUNC_SELECT(PERIPHS_IO_MUX_MTDO_U, FUNC_GPIO14); //选择GPIO15
+	PIN_FUNC_SELECT(PERIPHS_IO_MUX_MTDO_U, FUNC_GPIO15); //选择GPIO15
 	GPIO_OUTPUT_SET(GPIO_ID_PIN(15), 1); //默认GPIO15为高,也就是关灯
 
 	MQTT_InitConnection(&mqttClient, sysCfg.mqtt_host, sysCfg.mqtt_port,
