@@ -24,6 +24,7 @@ CSDN博客博文：[http://blog.csdn.net/xh870189248/article/details/77985541](h
 | 《**9_TcpAndUdp**》|8266的TCP、UDP的客户端服务端代码工程。 |http://blog.csdn.net/xh870189248/article/details/78739311|
 | 《**10_ESP8266_MQTT_CSDN_1**》|【小实战上篇】Windows系统搭建8266的本地Mqtt服务器，局域网点亮一盏LED灯。|http://blog.csdn.net/xh870189248/article/details/78761948|
 | 《**11_ESP8266_CSDN_MQTT_2**》|【小实战下篇】Windows系统搭建8266的本地Mqtt服务器，局域网点亮一盏LED灯。|http://blog.csdn.net/xh870189248/article/details/78777371|
+| 《**12_Esp8266-Alink_OneLED**》|接入阿里智能控制LED。|...|
 | 《**Gizkit_soc_pet**》| 机智云Gokit2、3扩展板的soc方案宠物屋代码。 |...|
 | 《**GokitTimerLight**》| 基于机智云平台soc方案定时开启一个LED的源码。 |http://club.gizwits.com/thread-7787-1-1.html|
  
