@@ -1,7 +1,7 @@
 #!/bin/bash
 
-export SDK_PATH=/home/esp8266/Share/esp8266-alink-v1.0-master/esp8266-rtos-sdk
-export BIN_PATH=/home/esp8266/Share/esp8266-alink-v1.0-master/bin
+export SDK_PATH=/home/esp8266/Share/Esp8266-Alink_OneLED/esp8266-rtos-sdk
+export BIN_PATH=/home/esp8266/Share/Esp8266-Alink_OneLED/bin
 
 if [ ! -d "bin" ]; then
   mkdir bin
