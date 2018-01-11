@@ -1,4 +1,4 @@
-﻿<p align="center">
+<p align="center">
   <img src="http://h5xuhong.oss-cn-hongkong.aliyuncs.com/8266%E5%9B%BE%E7%89%87/8266popuuo.png" width="550px" height="360px" alt="Banner" />
 </p>
  
@@ -31,12 +31,24 @@ CSDN博客博文：[http://blog.csdn.net/xh870189248/article/details/77985541](h
 
 
 **************************************************************************************************
+
+
+## 学习借鉴：
+ 
+- FreeRTOS系统讲解一期视频教程 -  [http://open.21ic.com/open/lesson/460](http://open.21ic.com/open/lesson/460 "http://open.21ic.com/open/lesson/460")
+
+- FreeRTOS系统讲解二期视频教程 -  [http://open.21ic.com/open/lesson/560](http://open.21ic.com/open/lesson/560 "http://open.21ic.com/open/lesson/560")
+
+**************************************************************************************************
+
+
 <p align="center">
   <img src="http://h5xuhong.oss-cn-hongkong.aliyuncs.com/8266%E5%9B%BE%E7%89%87/aliyun8989.png" width="800px" height="400px" alt="Banner" />
 </p>
 
 以下是博主的总结：
 **************************************************************************************************
+
 #### ①、最小系统电路图：搭建开发环境，开始一个“hellow world”串口打印： http://blog.csdn.net/xh870189248/article/details/77985541
 
 ![8266最小系统](http://h5xuhong.oss-cn-hongkong.aliyuncs.com/8266%E5%9B%BE%E7%89%87/%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F.png) 
