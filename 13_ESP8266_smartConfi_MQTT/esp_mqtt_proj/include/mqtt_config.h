@@ -7,14 +7,14 @@
 
 /*DEFAULT CONFIGURATIONS*/
 
-#define MQTT_HOST			"120.79.82.119" //or "mqtt.yourdomain.com"
+#define MQTT_HOST			"" //务必填写您的服务器地址
 #define MQTT_PORT			1883
 #define MQTT_BUF_SIZE		1024
 #define MQTT_KEEPALIVE		120	 /*second*/
 
 #define MQTT_CLIENT_ID		"text_xuhong"
 #define MQTT_USER			"xuhong"
-#define MQTT_PASS			"bkxz733633"
+#define MQTT_PASS			"what"
 
 #define STA_SSID "DVES_HOME"
 #define STA_PASS "yourpassword"
