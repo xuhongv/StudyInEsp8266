@@ -27,6 +27,10 @@ CSDN博客博文：[http://blog.csdn.net/xh870189248/article/details/77985541](h
 | 《**12_Esp8266-Alink_OneLED**》|接入阿里智能控制LED。|http://blog.csdn.net/xh870189248/article/details/78807018|
 | 《**13_ESP8266_smartConfi_MQTT**》|Mqtt协议+smartConfig控制一盏LED（基于2.1.0版本）|http://blog.csdn.net/xh870189248/article/details/79052347|
 | 《**14_ESP8266_smartConfig_Mqtt**》|Mqtt协议+smartConfig控制一盏LED（基于2.2.0版本）|http://blog.csdn.net/xh870189248/article/details/79052347|
+| 《**14_ESP8266_smartConfig_Mqtt**》|Mqtt协议+smartConfig控制一盏LED（基于2.2.0版本）|http://blog.csdn.net/xh870189248/article/details/79052347|
+| 《**15_ESP8266_Timer2**》|2018-1-17 （基于NONOS 2.2.0版本）硬件中断定时器控制闪烁一盏LED|http://blog.csdn.net/xh870189248/article/details/78155357|
+| 《**16_ESP8266_RTOS_SDK_V1.5.0**》|（基于FreeRtos 1.5.0版本）的 hello world 串口打印工程模板|http://blog.csdn.net/xh870189248/article/details/79103373|
+| 《**17_ESP8266_RedInfra1883**》|乐鑫8266的红外线遥控控制1883固件|http://blog.csdn.net/xh870189248/article/details/79486075|
 | 《**Gizkit_soc_pet**》| 机智云Gokit2、3扩展板的soc方案宠物屋代码。 |...|
 | 《**GokitTimerLight**》| 基于机智云平台soc方案定时开启一个LED的源码。 |http://club.gizwits.com/thread-7787-1-1.html|
  
