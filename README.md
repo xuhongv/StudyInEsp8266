@@ -49,7 +49,7 @@ CSDN博客博文：[http://blog.csdn.net/xh870189248/article/details/77985541](h
  
  #### 三 、 8266其他好玩的项目收集汇总；
  
- [x] 8266的5路PWM,允许占空比从0％到100％，步长为200ns。1kHz PWM是5000步，19kHz是256步（8位分辨率）。
+ - [x] 8266的5路PWM,允许占空比从0％到100％，步长为200ns。1kHz PWM是5000步，19kHz是256步（8位分辨率）。
     https://github.com/StefanBruens/ESP8266_new_pwm
  
  
