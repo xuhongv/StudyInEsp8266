@@ -33,6 +33,7 @@ CSDN博客博文：[http://blog.csdn.net/xh870189248/article/details/77985541](h
 | 《**17_ESP8266_RedInfra1883**》|乐鑫8266的红外线遥控控制1883固件|http://blog.csdn.net/xh870189248/article/details/79486075|
 | 《**18_Esp8266_quickNet_5**》|乐鑫8266的自研的快速开关五次，开-关-开-关-开，之后灯光闪烁，进去配网模式|http://blog.csdn.net/xh870189248/article/details/79486075|
 | 《**19_Esp8266_ds18b20_dht11**》|乐鑫esp8266驱动 ds18b20、dht11 温湿度传感器，采集温湿度传感器到服务器。|https://blog.csdn.net/xh870189248/article/details/80284827|
+| 《**20_SmartConfigInterface**》|使用C语言对`smartConfig`的二次封装。|https://blog.csdn.net/xh870189248/article/details/80375188|
 | 《**Gizkit_soc_pet**》| 机智云Gokit2、3扩展板的soc方案宠物屋代码。 |...|
 | 《**GokitTimerLight**》| 基于机智云平台soc方案定时开启一个LED的源码。 |http://club.gizwits.com/thread-7787-1-1.html|
  
