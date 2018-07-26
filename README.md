@@ -55,5 +55,30 @@ CSDN博客博文：[http://blog.csdn.net/xh870189248/article/details/77985541](h
  
  - [x] 8266的5路PWM,允许占空比从0％到100％，步长为200ns。1kHz PWM是5000步，19kHz是256步（8位分辨率）。
     https://github.com/StefanBruens/ESP8266_new_pwm
+    
+ #### 四 、 如何判断上次掉电重启的原因；
+  >这个代码可以判断是否软件复位或者硬件复位，或者判断是否正常重启（包括看门狗复位、非法指针）；
+
+
+```
+    struct rst_info *rtc_info = system_get_rst_info();
+   
+    printf( "reset reason: %x\n", rtc_info->reason);
+  
+    if (rtc_info->reason == REASON_WDT_RST ||
+        rtc_info->reason == REASON_EXCEPTION_RST ||
+        rtc_info->reason == REASON_SOFT_WDT_RST){
+        if (rtc_info->reason == REASON_EXCEPTION_RST)
+        {
+            GIZWITS_LOG("Fatal exception (%d):\n", rtc_info->exccause);
+        }
+        printf( "epc1=0x%08x, epc2=0x%08x, epc3=0x%08x, excvaddr=0x%08x, depc=0x%08x\n",
+                rtc_info->epc1, rtc_info->epc2, rtc_info->epc3, rtc_info->excvaddr, rtc_info->depc);
+    }
+
+
+```
+ 
+ 
  
  
