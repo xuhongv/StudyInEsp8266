@@ -11,9 +11,9 @@
 
 ### 课程计划：
 
-- [x] [《1_HelloWorld》第1篇：esp8266的前生今世，为何称为物联网的里程碑。对比nons sdk和rtos sdk开发以及各种开发不同点？][1]
+- [x] 《1_HelloWorld》:[第1篇：esp8266的前生今世，为何称为物联网的里程碑。对比nons sdk和rtos sdk开发以及各种开发不同点？][1]
 
  
 
 
-  [1]: http//www.baidu.com
+  [1]: 1_HelloWorld
