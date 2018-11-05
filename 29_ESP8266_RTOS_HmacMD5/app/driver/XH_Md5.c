@@ -159,7 +159,19 @@ void XH_MD5Transform(unsigned int state[4], unsigned char block[64]) {
 	state[2] += c;
 	state[3] += d;
 }
-
+/*****************************************************************************
+ * 函 数 名  : XH_MD5StartDigest
+ * 函数功能  : 开始 MD5加密
+ * 输入参数  :
+ *
+ * strContent:要加密的数据
+ * iLength:要加密的数据的长度
+ * typeMd5: 16表示生成16位  32表示生成32位
+ * outBuffer:要接收的字符串
+ *
+ * 返 回 值  : 无
+ * 备    注  : 无
+ *****************************************************************************/
 void XH_MD5StartDigest(void const *strContent, u16 iLength, u8 typeMd5,
 		u8 *outBuffer) {
 
@@ -184,7 +196,6 @@ void XH_MD5StartDigest(void const *strContent, u16 iLength, u8 typeMd5,
 	}
 
 }
-
 /*
  * function: XH_MD5Digest
  * parameter: void const *strContent - 需要XH_MD5的字符串
