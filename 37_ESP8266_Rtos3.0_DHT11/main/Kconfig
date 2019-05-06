@@ -1,0 +1,25 @@
+menu "Joylink"
+
+config JOYLINK_SOFTAP_BUTTON_NUM
+    int "the io number for softap configure network"
+    default 16
+
+config JOYLINK_DEVICE_FIRMWARE_VERSION
+    string "The device firware version, you can set it from Joylink"
+    default 1
+
+config JOYLINK_DEVICE_UUID
+    string "The device uuid, you can get it from Joylink"
+
+
+config JOYLINK_SOFTAP_ENABLE
+    bool "Enabe Joylink softap configure wifi"
+	default y
+
+config JOYLINK_SOFTAP_PACKET_HEAD
+    string "The header of the SoftAP SSID"
+        depends on JOYLINK_SOFTAP_ENABLE
+
+
+
+endmenu
