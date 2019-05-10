@@ -1,0 +1,1 @@
+esp8266-12模块基于rtos3.1版本ota功能远程空中升级固件，官网之上增加dns域名解析！（附带demo） - 徐宏的博客。 - CSDN博客 https://xuhong.blog.csdn.net/article/details/90079984
