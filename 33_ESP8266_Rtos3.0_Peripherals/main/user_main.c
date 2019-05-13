@@ -143,7 +143,14 @@ static void Task_Gpio_test(void *pData)
 const uint32_t pinNum[CHANNLE_PWM_TOTAL] = {PWM_CW_OUT_IO_NUM, PWM_WW_OUT_IO_NUM};
 // don't alter it !!! dutys table, (duty/PERIOD)*depth , init
 uint32_t setDuties[CHANNLE_PWM_TOTAL] = {50, 50};
-
+//相位设置，不懂的或者不需要的全部为0即可
+int16_t phase[CHANNLE_PWM_TOTAL] = {
+    0,
+    100,
+    0,
+    0,
+    0,
+};
 static int set_duty = 10;
 static int dir = 1;
 os_timer_t os_timer;
@@ -172,6 +179,8 @@ static void Task_Pwm_test(void *pData)
 {
     //初始化
     pwm_init(PWM_PERIOD, setDuties, CHANNLE_PWM_TOTAL, pinNum);
+	//设置相位：具体有什么用访问 https://blog.csdn.net/xh870189248/article/details/88526251#PWM_143
+	pwm_set_phases(phase);
     //呼吸效果
     os_timer_disarm(&os_timer);
     os_timer_setfn(&os_timer, (os_timer_func_t *)(Task_pwm_blank), NULL);
