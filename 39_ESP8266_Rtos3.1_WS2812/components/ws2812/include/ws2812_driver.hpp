@@ -15,33 +15,37 @@
 #ifdef   __cplusplus 
 extern "C"{
 #endif
-
-
     #include <stdio.h>
     #include <string.h>
     #include <stdlib.h>
-
     #include "freertos/FreeRTOS.h"
     #include "freertos/task.h"
     #include "freertos/queue.h"
-
     #include "driver/gpio.h"
     #include "driver/hw_timer.h"
-
     #include "esp_log.h"
     #include "esp_system.h"
-
     #include "esp_libc.h"
     #include "rom/gpio.h"
 
 
-
-//WS2812初始化函数
+/**
+ * @description: 初始化
+ * @param {type} 
+ * @return: 
+ */
 void WS2812_Init(void);
 
-//发送一个灯的颜色
-void  WS2812BSend_24bit(uint8_t R, uint8_t G, uint8_t B);
+/**
+ * @description: 设置颜色
+ * @param {type} 此发送格式为rgb顺序
+ * @return: 
+ */
+void ws2812_setColor(uint8_t r, uint8_t g, uint8_t b);
 
+
+//尊重原创，下面保留！
+void  WS2812BSend_24bit(uint8_t R, uint8_t G, uint8_t B);
 void setAllPixelColor(uint8_t r, uint8_t g, uint8_t b);
 void setPixelColor(uint16_t n, uint8_t r, uint8_t g, uint8_t b);
 void SetPixelColor(uint16_t n, uint32_t c);

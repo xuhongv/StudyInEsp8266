@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include "esp_system.h"
 #include <stdlib.h>
@@ -25,8 +26,9 @@
 //打印日志用
 static const char *TAG = "Ws2812Log";
 
+
 /******************************************************************************
- * FunctionName : app_main
+ * FunctionName : 程序入口
  * Description  : entry of user application, init user function here
  * Parameters   : none
  * Returns      : none
@@ -59,13 +61,17 @@ void app_main(void)
     WS2812_Init();
     while (1)
     {
-        setAllPixelColor(254, 0, 0);
+        //彩虹效果
+        // rainbowCycle(500);
+        // vTaskDelay(1000 / portTICK_PERIOD_MS);
+
+        //三色变换
+        ws2812_setColor(254, 0, 0);
         vTaskDelay(1000 / portTICK_PERIOD_MS);
-        setAllPixelColor(0, 254, 0);
+        ws2812_setColor(0, 254, 0);
         vTaskDelay(1000 / portTICK_PERIOD_MS);
-        setAllPixelColor(0, 0, 254);
+        ws2812_setColor(0, 0, 254);
         vTaskDelay(1000 / portTICK_PERIOD_MS);
+
     }
 }
-
-//python /home/XuHongYss/ESP8266_RTOS_SDK/components/esptool_py/esptool/esptool.py --chip esp8266 --port COM12 --baud 115200 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size 2MB 0x0000 /home/XuHongYss/ESP8266_RTOS_SDK/MyProject/ESP8266_WS2812/build/bootloader/bootloader.bin 0x10000 /home/XuHongYss/ESP8266_RTOS_SDK/MyProject/ESP8266_WS2812/build/simple_wifi.bin 0x8000 /home/XuHongYss/ESP8266_RTOS_SDK/MyProject/ESP8266_WS2812/build/partitions_singleapp.bin

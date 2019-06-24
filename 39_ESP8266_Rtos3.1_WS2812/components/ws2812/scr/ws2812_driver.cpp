@@ -19,7 +19,6 @@
 
 static void IRAM_ATTR spi_event_callback(int event, void *arg)
 {
- 
 }
 
 /**
@@ -27,7 +26,7 @@ static void IRAM_ATTR spi_event_callback(int event, void *arg)
  * @param {type} 
  * @return: 
  */
-void ws2812_spi_mode_init(void) 
+void ws2812_spi_mode_init(void)
 {
   uint8_t x = 0;
 
@@ -50,10 +49,9 @@ void ws2812_spi_mode_init(void)
   spi_config.mode = SPI_MASTER_MODE;
   // Set the SPI clock frequency division factor
   spi_config.clk_div = SPI_8MHz_DIV;
-  // Register SPI event callback function
+  // 注册回调函数，这里没什么用处！
   spi_config.event_cb = spi_event_callback;
   spi_init(HSPI_HOST, &spi_config);
-
 }
 
 //驱动WS2812 LED灯  单引脚初始化
@@ -323,6 +321,26 @@ void WS2812B_Init(void)
   WS2812_Init();
   colorWipe(Color(0, 0, 255), 1);
   setAllPixelColor(0, 0, 0);
+}
+
+/**
+ * @description: 设置颜色
+ * @param {type} 此发送格式为rgb顺序
+ * @return: 
+ */
+void ws2812_setColor(uint8_t r, uint8_t g, uint8_t b)
+{
+  setAllPixelColor(r, g, b);
+}
+
+/**
+ * @description: 设置颜色
+ * @param {type} 此发送格式为grb顺序
+ * @return: 
+ */
+void ws2812_setColor_grb(uint8_t g, uint8_t r, uint8_t b)
+{
+  setAllPixelColor(r, g, b);
 }
 
 void WS2812B_Test(void)
