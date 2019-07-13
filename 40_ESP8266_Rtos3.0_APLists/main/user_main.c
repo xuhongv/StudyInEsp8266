@@ -15,6 +15,9 @@
  *    有任何技术问题邮箱： 870189248@qq.com
  *    本人GitHub仓库：https://github.com/xuhongv
  *    本人博客：https://blog.csdn.net/xh870189248
+ *    
+ *    注意事项 ------> 代码仅仅可以扫描出附近的 2.4G频段的AP！
+ * 
  **/
 
 static const char *TAG = "ScanAPList";
@@ -100,19 +103,13 @@ static void TaskScanResult(void *pvParameters)
             //获取上次扫描中找到的AP列表
             ESP_ERROR_CHECK(esp_wifi_scan_get_ap_records(&counts, list));
 
-            printf("======================================================================\n");
-            printf("             AP             |    RSSI    |           AUTH     |     CHANNLE     \n");
-            printf("======================================================================\n");
-
             int i;
             for (i = 0; i < counts; i++)
             {
-
                 if (strlen((const char *)list[i].ssid) == 0)
                 {
                     continue;
                 }
-
                 char *authmode;
                 switch (list[i].authmode)
                 {
@@ -135,18 +132,17 @@ static void TaskScanResult(void *pvParameters)
                     authmode = "Unknown";
                     break;
                 }
-                printf("%26.26s    |    % 4d    |    %22.22s |  %d  \n", list[i].ssid, list[i].rssi, authmode, configForScan.channel);
+
+                printf("AP Name: %s| SSID: %d | oauthMode：%22.22s | channle:%d  \n", list[i].ssid, list[i].rssi, authmode, configForScan.channel);
             }
             free(list); //根据官网的描述，这里必须释放
-            printf("\n\n");
         }
         else
         {
             ESP_LOGE(TAG, "No AP to find at channle[%d].", configForScan.channel);
         }
-
+        //组成json格式数据
         xEventGroupClearBits(wifi_event_group, BIT_DONE);
-
         //延迟一秒
         vTaskDelay(500 / portTICK_PERIOD_MS); //调用延时函数，再次扫描
         //扫描开始
@@ -163,7 +159,6 @@ static void TaskScanResult(void *pvParameters)
         }
     }
 }
-
 void app_main(void)
 {
     //Initialize NVS
