@@ -2,7 +2,7 @@
  * @Description: 本地局域网通讯的例子
  * @Author: 徐宏
  * @Date: 2019-10-17 09:36:23
- * @LastEditTime: 2019-10-17 15:20:38
+ * @LastEditTime: 2019-10-17 15:42:07
  * @LastEditors: Please set LastEditors
  */
 
@@ -64,7 +64,7 @@ xMessage tempMsg;
 static xQueueHandle ParseJSONQueueHandler = NULL;                                                       //解析json数据的队列
 static xTaskHandle mHandlerParseJSON = NULL, mHandlerLocalServer = NULL, mHandlerLocalBroadcast = NULL; //任务队列
 
-char udp_msg[] = {"\"name\":\"xuhong\",\"age\":18"}; //固定的本地广播数据
+char udp_msg[102]; //固定的本地广播数据
 
 void Task_ParseJSON(void *pvParameters)
 {
@@ -75,7 +75,7 @@ void Task_ParseJSON(void *pvParameters)
 
         printf("[SY] Task_ParseJSON_Message xQueueReceive wait ... \n");
         xQueueReceive(ParseJSONQueueHandler, &pMqttMsg, portMAX_DELAY);
-        printf("[SY] xQueueReceive  data [%s] \n",pMqttMsg->allData);
+        printf("[SY] xQueueReceive  data [%s] \n", pMqttMsg->allData);
     }
 }
 void Task_local_server(void *ab)
@@ -203,6 +203,7 @@ void Task_local_broadcast(void *pData)
 
 static esp_err_t event_handler(void *ctx, system_event_t *event)
 {
+
     switch (event->event_id)
     {
     case SYSTEM_EVENT_STA_START:
@@ -225,6 +226,8 @@ static esp_err_t event_handler(void *ctx, system_event_t *event)
             xTaskCreate(Task_local_broadcast, "Task_local_broadcast", 512, NULL, 3, &mHandlerLocalBroadcast);
             printf("[SY] create Task_local_broadcast thread ...\n");
         }
+
+        sprintf(udp_msg, "{\"name\":\"xuhong\",\"age\":18\",\"ip\":\"%s\"}", ip4addr_ntoa(&event->event_info.got_ip.ip_info.ip));
 
         break;
     case SYSTEM_EVENT_STA_DISCONNECTED:
