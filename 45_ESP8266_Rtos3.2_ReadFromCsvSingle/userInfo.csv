@@ -1,0 +1,6 @@
+key,type,encoding,value
+user-info,namespace,,
+Name,data,string,xuhong
+Age,data,u8,18
+Csdn,data,string,https://blog.csdn.net/xh870189248
+GitHub,data,string,https://github.com/xuhongv
