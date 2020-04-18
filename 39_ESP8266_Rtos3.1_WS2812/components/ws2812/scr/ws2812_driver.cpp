@@ -138,7 +138,7 @@ void WS2812BSend_24bit(uint8_t R, uint8_t G, uint8_t B)
   spi_trans_t trans = {0};
   trans.mosi = spi_buf;
   trans.bits.mosi = 24 * 8;
-  spi_trans(HSPI_HOST, trans);
+  spi_trans(HSPI_HOST,&trans);
 }
 
 //The following reference from the network
