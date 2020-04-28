@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/queue.h"
@@ -8,16 +9,6 @@
 #include "nvs_flash.h"
 #include "driver/gpio.h"
 #include "xpwm.h"
-
-#define CHANNLE_PWM_TOTAL 2
-
-#define CHANNLE_PWM_RED 2
-#define CHANNLE_PWM_GREEN 3
-#define CHANNLE_PWM_BLUE 4
-
-#define PWM_RED_OUT_IO_NUM 0
-#define PWM_GREEN_OUT_IO_NUM 0
-#define PWM_BLUE_OUT_IO_NUM 0
 
 esp_err_t pwm_init_data()
 {
@@ -79,7 +70,24 @@ esp_err_t pwm_init_data()
     //本地存储取出数据
     if (IS_SAVE_PARAMS)
     {
-        /* code */
+
+        nvs_handle out_handle;
+
+        memset(&dev_status, 0x0, sizeof(dev_status));
+
+        uint32_t length = sizeof(dev_status);
+
+        if (nvs_open(NVS_CONFIG_NAME, NVS_READWRITE, &out_handle) != ESP_OK)
+        {
+            printf("open innet_conf fail\n");
+            return ESP_FAIL;
+        }
+        if (nvs_get_blob(out_handle, NVS_TABLE_NAME, &dev_status, &length) != ESP_OK)
+            return ESP_FAIL;
+
+        printf(" outBrightnessChannle : %d , outColortempChannle %d \n", dev_status.Brightness, dev_status.Colortemp);
+
+        nvs_close(out_handle);
     }
 
     return result;
@@ -93,14 +101,18 @@ esp_err_t light_driver_set_ctb(const int brightness, const int color_temperature
     uint8_t outWW = (brightness * tempWW / 100);
     int outBrightnessChannle = 8192 * outCW / 100;
     int outColortempChannle = 8192 * outWW / 100;
+
     // printf(" outBrightnessChannle : %d , outColortempChannle %d \n", outBrightnessChannle, outColortempChannle);
 
     dev_status.Brightness = brightness;
     dev_status.Colortemp = color_temperature;
 
-    // dev_status.Red = 0;
-    // dev_status.Green = 0;
-    // dev_status.Blue = 0;
+    if (5 == CHANNLE_PWM_TOTAL)
+    {
+        dev_status.Red = 0;
+        dev_status.Green = 0;
+        dev_status.Blue = 0;
+    }
 
     if (dev_status.Brightness == 0)
     {
@@ -113,12 +125,14 @@ esp_err_t light_driver_set_ctb(const int brightness, const int color_temperature
 
     ledc_set_fade_with_time(LEDC_MODE, 1, outColortempChannle, LEDC_FADE_TIME);
     ledc_set_fade_with_time(LEDC_MODE, 0, outBrightnessChannle, LEDC_FADE_TIME);
+
     if (CHANNLE_PWM_TOTAL == 5)
     {
         ledc_set_fade_with_time(LEDC_MODE, CHANNLE_PWM_RED, 0, LEDC_FADE_TIME);
         ledc_set_fade_with_time(LEDC_MODE, CHANNLE_PWM_GREEN, 0, LEDC_FADE_TIME);
         ledc_set_fade_with_time(LEDC_MODE, CHANNLE_PWM_BLUE, 0, LEDC_FADE_TIME);
     }
+
     int ch = 0;
     for (ch = 0; ch < CHANNLE_PWM_TOTAL; ch++)
     {
@@ -217,4 +231,69 @@ uint8_t light_driver_get_mode()
 uint8_t light_driver_get_version()
 {
     return 1;
+}
+
+esp_err_t light_driver_set_rgb(const uint8_t red, const uint8_t green, const uint8_t blue)
+{
+
+    dev_status.Brightness = 0;
+    dev_status.Colortemp = 0;
+    dev_status.Red = red;
+    dev_status.Green = green;
+    dev_status.Blue = blue;
+
+    if (!dev_status.Red || !dev_status.Green || !dev_status.Blue)
+    {
+        dev_status.Power = 0;
+    }
+    else
+    {
+        dev_status.Power = 1;
+    }
+
+    int outRedChannle = 8192 * red / APK_MAX_COLOR;
+    int outGreenChannle = 8192 * green / APK_MAX_COLOR;
+    int outBlueChannle = 8192 * blue / APK_MAX_COLOR;
+
+    // printf("outRedChannle: %d \n", outRedChannle);
+    // printf("outGreenChannle: %d \n", outGreenChannle);
+    // printf("outBlueChannle: %d\n\n", outBlueChannle);
+
+    ledc_set_fade_with_time(LEDC_MODE, CHANNLE_PWM_CW, 0, LEDC_FADE_TIME);
+    ledc_set_fade_with_time(LEDC_MODE, CHANNLE_PWM_WW, 0, LEDC_FADE_TIME);
+    ledc_set_fade_with_time(LEDC_MODE, CHANNLE_PWM_RED, outRedChannle, LEDC_FADE_TIME);
+    ledc_set_fade_with_time(LEDC_MODE, CHANNLE_PWM_GREEN, outGreenChannle, LEDC_FADE_TIME);
+    ledc_set_fade_with_time(LEDC_MODE, CHANNLE_PWM_BLUE, outBlueChannle, LEDC_FADE_TIME);
+
+    int ch = 0;
+    for (ch = 0; ch < CHANNLE_PWM_TOTAL; ch++)
+    {
+        ledc_fade_start(LEDC_MODE, ch, LEDC_FADE_NO_WAIT);
+    }
+
+    if (IS_SAVE_PARAMS)
+    {
+        nvs_handle out_handle;
+        if (nvs_open(NVS_CONFIG_NAME, NVS_READWRITE, &out_handle) != ESP_OK)
+        {
+            printf("open innet_conf fail\n");
+            return ESP_FAIL;
+        }
+        if (nvs_set_blob(out_handle, NVS_TABLE_NAME, &dev_status, sizeof(dev_status)) != ESP_OK)
+            printf("Save Struct  Fail !!  \n");
+        else
+            printf("Save Struct  ok !!  \n");
+        //提交下！相当于软件面板的 “应用” 按钮，并没关闭面板！
+        nvs_commit(out_handle);
+        nvs_close(out_handle);
+    }
+    return ESP_OK;
+}
+
+esp_err_t light_driver_get_rgb(uint8_t *p_red, uint8_t *p_green, uint8_t *p_blue)
+{
+    *p_red = dev_status.Red;
+    *p_green = dev_status.Green;
+    *p_blue = dev_status.Blue;
+    return ESP_OK;
 }

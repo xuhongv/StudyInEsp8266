@@ -35,6 +35,86 @@
 #include "driver/ledc.h"
 #include "xpwm.h"
 
+
+/**
+ *    这是一个在 esp8266 rtos master 分支在 ledc 上实现 平滑调光 的 亮度色温 rgb 调光功能实现
+ *    有任何技术问题邮箱： 870189248@qq.com
+ *    本人GitHub仓库：https://github.com/xuhongv
+ *    本人博客：https://blog.csdn.net/xh870189248
+ * 
+ **/
+
+
+
+/**
+ * @description: 颜色设置
+ * @param {type} 
+ * @return: 
+ */
+static void Task_set_color(void *parm)
+{
+    light_driver_set_rgb(255, 0, 0);
+    vTaskDelay(3000 / portTICK_PERIOD_MS);
+    light_driver_set_rgb(0, 255, 0);
+    vTaskDelay(3000 / portTICK_PERIOD_MS);
+    light_driver_set_rgb(0, 0, 255);
+    vTaskDelay(3000 / portTICK_PERIOD_MS);
+    light_driver_set_rgb(255, 128, 0);
+    vTaskDelay(3000 / portTICK_PERIOD_MS);
+    light_driver_set_rgb(255, 0, 128);
+    vTaskDelay(3000 / portTICK_PERIOD_MS);
+    vTaskDelete(NULL);
+}
+/**
+ * @description:  工作模式设置
+ * @param {type} 
+ * @return: 
+ */
+static void Task_set_mode(void *parm)
+{
+    light_driver_set_mode(0);
+    vTaskDelay(3000 / portTICK_PERIOD_MS);
+    light_driver_set_mode(1);
+    vTaskDelay(3000 / portTICK_PERIOD_MS);
+    light_driver_set_mode(2);
+    vTaskDelay(3000 / portTICK_PERIOD_MS);
+    light_driver_set_mode(3);
+    vTaskDelay(3000 / portTICK_PERIOD_MS);
+    light_driver_set_mode(4);
+    vTaskDelay(3000 / portTICK_PERIOD_MS);
+    xTaskCreate(Task_set_color, "Task_set_color", 1024 * 2, NULL, 8, NULL); // 创建任务
+    vTaskDelete(NULL);
+}
+/**
+ * @description:  冷暖光设置
+ * @param {type} 
+ * @return: 
+ */
+static void Task_brightness_temperature(void *parm)
+{
+
+    //亮度取值范围为 0~100 ，色温取值范围2700~6500， 均在 头文件可定义
+    light_driver_set_ctb(100, 6500);
+    vTaskDelay(3000 / portTICK_PERIOD_MS);
+    light_driver_set_ctb(100, 2700);
+    vTaskDelay(3000 / portTICK_PERIOD_MS);
+    light_driver_set_ctb(100, 4600);
+    vTaskDelay(3000 / portTICK_PERIOD_MS);
+    light_driver_set_ctb(0, APK_MIN_COLORTEMP);
+    vTaskDelay(3000 / portTICK_PERIOD_MS);
+    light_driver_set_brightness(100);
+    vTaskDelay(1500 / portTICK_PERIOD_MS);
+    light_driver_set_colorTemperature(APK_MIN_COLORTEMP);
+    vTaskDelay(1500 / portTICK_PERIOD_MS);
+    light_driver_set_brightness(10);
+    vTaskDelay(1500 / portTICK_PERIOD_MS);
+    light_driver_set_colorTemperature(5000);
+    vTaskDelay(1500 / portTICK_PERIOD_MS);
+
+    xTaskCreate(Task_set_mode, "Task_set_mode", 1024 * 2, NULL, 8, NULL); // 创建任务
+    vTaskDelete(NULL);
+}
+
 void app_main()
 {
 
@@ -49,27 +129,5 @@ void app_main()
 
     pwm_init_data();
 
-    //亮度取值范围为 0~100 ，色温取值范围2700~6500， 均在 头文件可定义
-    light_driver_set_ctb(100, 6500);
-    vTaskDelay(3000 / portTICK_PERIOD_MS);
-    light_driver_set_ctb(100, 2700);
-    vTaskDelay(3000 / portTICK_PERIOD_MS);
-    light_driver_set_ctb(100, 4600);
-    vTaskDelay(3000 / portTICK_PERIOD_MS);
-    light_driver_set_ctb(0, 0);
-    vTaskDelay(3000 / portTICK_PERIOD_MS);
-
-    while (1)
-    {
-        light_driver_set_mode(0);
-        vTaskDelay(3000 / portTICK_PERIOD_MS);
-        light_driver_set_mode(1);
-        vTaskDelay(3000 / portTICK_PERIOD_MS);
-        light_driver_set_mode(2);
-        vTaskDelay(3000 / portTICK_PERIOD_MS);
-        light_driver_set_mode(3);
-        vTaskDelay(3000 / portTICK_PERIOD_MS);
-        light_driver_set_mode(4);
-        vTaskDelay(3000 / portTICK_PERIOD_MS);
-    }
+    xTaskCreate(Task_brightness_temperature, "Task_brightness_temperature", 1024 * 2, NULL, 8, NULL); // 创建任务
 }
