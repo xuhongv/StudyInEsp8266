@@ -1,0 +1,2 @@
+python /home/xuhongv/ESPRESSIF/ESP8266/ESP8266_RTOS_SDK/components/esptool_py/esptool/esptool.py --chip esp8266 --port COM23 --baud 921600 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size 2MB 0x0 /home/xuhongv/Mine/StudyInEsp8266/47_ESP8266_Brightness_Colortemp/build/bootloader/bootloader.bin 0x10000 /home/xuhongv/Mine/StudyInEsp8266/47_ESP8266_Brightness_Colortemp/build/gpio.bin 0x8000 /home/xuhongv/Mine/StudyInEsp8266/47_ESP8266_Brightness_Colortemp/build/partitions_singleapp.bin
+
