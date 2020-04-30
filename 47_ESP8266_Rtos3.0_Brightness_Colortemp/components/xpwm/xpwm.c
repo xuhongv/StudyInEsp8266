@@ -102,7 +102,7 @@ esp_err_t light_driver_set_ctb(const int brightness, const int color_temperature
     int outBrightnessChannle = 8192 * outCW / 100;
     int outColortempChannle = 8192 * outWW / 100;
 
-    // printf(" outBrightnessChannle : %d , outColortempChannle %d \n", outBrightnessChannle, outColortempChannle);
+    printf(" light_driver_set_ctb=> outBrightnessChannle : %d , outColortempChannle %d \n", outBrightnessChannle, outColortempChannle);
 
     dev_status.Brightness = brightness;
     dev_status.Colortemp = color_temperature;
@@ -159,8 +159,9 @@ esp_err_t light_driver_set_ctb(const int brightness, const int color_temperature
 }
 esp_err_t light_driver_set_switch(bool power)
 {
+
     // 如果当前为关灯状态则不做处理
-    if (power && dev_status.Power)
+    if (power && dev_status.Power == 0)
     {
         //开灯默认是中性光
         light_driver_set_ctb(100, APK_MID_COLORTEMP);
@@ -204,7 +205,12 @@ esp_err_t light_driver_set_brightness(uint8_t brightness)
 }
 esp_err_t light_driver_set_colorTemperature(int colorTemperature)
 {
-    light_driver_set_ctb(dev_status.Colortemp, colorTemperature);
+    if (dev_status.Brightness == 0)
+    {
+        dev_status.Brightness = 100;
+    }
+
+    light_driver_set_ctb(dev_status.Brightness, colorTemperature);
     return ESP_OK;
 }
 
@@ -295,5 +301,74 @@ esp_err_t light_driver_get_rgb(uint8_t *p_red, uint8_t *p_green, uint8_t *p_blue
     *p_red = dev_status.Red;
     *p_green = dev_status.Green;
     *p_blue = dev_status.Blue;
+    return ESP_OK;
+}
+
+esp_err_t light_driver_set_ctb_not_save(const int brightness, const int color_temperature)
+{
+    int part = (APK_MAX_COLORTEMP - APK_MIN_COLORTEMP) / 100;
+    int temp = APK_MAX_COLORTEMP - color_temperature;
+    int tempWW = ((temp) / part);
+    uint8_t outCW = (brightness - (brightness * tempWW / 100));
+    uint8_t outWW = (brightness * tempWW / 100);
+    int outBrightnessChannle = 8192 * outCW / 100;
+    int outColortempChannle = 8192 * outWW / 100;
+
+    // printf(" outBrightnessChannle : %d , outColortempChannle %d \n", outBrightnessChannle, outColortempChannle);
+
+    dev_status.Brightness = brightness;
+    dev_status.Colortemp = color_temperature;
+
+    if (5 == CHANNLE_PWM_TOTAL)
+    {
+        dev_status.Red = 0;
+        dev_status.Green = 0;
+        dev_status.Blue = 0;
+    }
+
+    if (dev_status.Brightness == 0)
+    {
+        dev_status.Power = 0;
+    }
+    else
+    {
+        dev_status.Power = 1;
+    }
+
+    ledc_set_fade_with_time(LEDC_MODE, 1, outColortempChannle, 800);
+    ledc_set_fade_with_time(LEDC_MODE, 0, outBrightnessChannle, 800);
+
+    if (CHANNLE_PWM_TOTAL == 5)
+    {
+        ledc_set_fade_with_time(LEDC_MODE, CHANNLE_PWM_RED, 0, LEDC_FADE_TIME);
+        ledc_set_fade_with_time(LEDC_MODE, CHANNLE_PWM_GREEN, 0, LEDC_FADE_TIME);
+        ledc_set_fade_with_time(LEDC_MODE, CHANNLE_PWM_BLUE, 0, LEDC_FADE_TIME);
+    }
+
+    int ch = 0;
+    for (ch = 0; ch < CHANNLE_PWM_TOTAL; ch++)
+    {
+        ledc_fade_start(LEDC_MODE, ch, LEDC_FADE_NO_WAIT);
+    }
+
+    return ESP_OK;
+}
+
+esp_err_t light_driver_set_cycle(uint8_t nums)
+{
+    while (nums--)
+    {
+        light_driver_set_ctb_not_save(100, APK_MID_COLORTEMP);
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        light_driver_set_ctb_not_save(0, APK_MID_COLORTEMP);
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
+    }
+    light_driver_set_ctb(100, APK_MID_COLORTEMP);
+    return ESP_OK;
+}
+
+esp_err_t light_driver_set_ctb_from_last()
+{
+    light_driver_set_ctb(dev_status.Brightness, dev_status.Colortemp);
     return ESP_OK;
 }

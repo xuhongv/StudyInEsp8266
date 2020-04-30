@@ -1,12 +1,3 @@
-/*
- * @Author: xuhong
- * @Date: 2019-11-21 15:59:45
- * @LastEditTime: 2020-04-28 11:43:15
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \ESP8266_RTOS_SDK\mine\ESP8266ForMqttPWM\components\pwm\include\xpwm.h
- */
-
 #ifndef _IOT_PWMUTILS_H_
 #define _IOT_PWMUTILS_H_
 
@@ -31,7 +22,7 @@
 #define APK_MAX_COLORTEMP 6500 //用户定义最大的色温数值
 #define APK_MID_COLORTEMP 4800 //用户定义中间的色温数值
 #define APK_MIN_COLORTEMP 2700 //用户定义最小的色温数值
-#define APK_MAX_COLOR 255 //用户定义最大的RGB数值
+#define APK_MAX_COLOR 255      //用户定义最大的RGB数值
 //pwm gpio口配置
 #define CHANNLE_PWM_TOTAL 5
 
@@ -70,6 +61,8 @@ esp_err_t light_driver_set_ctb(const int brightness, const int color_temperature
 esp_err_t light_driver_set_rgb(const uint8_t red, const uint8_t green, const uint8_t blue);
 esp_err_t light_driver_set_switch(bool status);
 esp_err_t light_driver_set_mode(uint8_t mode);
+esp_err_t light_driver_set_cycle(uint8_t nums);
+esp_err_t light_driver_set_ctb_from_last();
 
 /**
  * @brief  Get the status of the light
